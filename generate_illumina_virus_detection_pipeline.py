@@ -199,7 +199,7 @@ def main():
 
         # trinity
         f.write(f"{args.output_directory}/{key}/trinity.OK: {args.output_directory}/{key}/trinity_input.OK\n")
-        f.write(f"\t{trinity} --seqType fq --left {args.output_directory}/{key}/trinityR1_input.fq --right {args.output_directory}/{key}/trinityR2_input.fq --CPU 2 --max_memory 40G --output {args.output_directory}/{key}/trinity_assembly > {args.output_directory}/{key}/trinity_assembly.txt.log 2> {args.output_directory}/{key}/trinity_assembly.txt.err\n")
+        f.write(f"\t{trinity} --seqType fq --left {args.output_directory}/{key}/trinityR1_input.fq --right {args.output_directory}/{key}/trinityR2_input.fq --CPU 6 --max_memory 40G --output {args.output_directory}/{key}/trinity_assembly > {args.output_directory}/{key}/trinity_assembly.txt.log 2> {args.output_directory}/{key}/trinity_assembly.txt.err\n")
         f.write(f"\ttouch {args.output_directory}/{key}/trinity.OK\n\n")
 
         # mapping using bwa
@@ -244,9 +244,9 @@ def main():
 
     # clean
     f.write("clean:\n")
-    f.write(f"\trm -f {args.output_directory}/nr* ")
+    f.write(f"\trm -fr {args.output_directory}/nr* ")
     for key in d1:
-        f.write(f"{args.output_directory}/{key}/*.log {args.output_directory}/{key}/*.err {args.output_directory}/{key}/input{key}1.fasta {args.output_directory}/{key}/input{key}2.fasta {args.output_directory}/{key}/1_fq_accession.txt {args.output_directory}/{key}/2_fq_accession.txt {args.output_directory}/{key}/combined_fq.txt {args.output_directory}/{key}/trinityR1_input.fq {args.output_directory}/{key}/trinityR2_input.fq {args.output_directory}/{key}/bowtie_accession.txt {args.output_directory}/{key}/references.fna {args.output_directory}/{key}/bowtie_database* {args.output_directory}/{key}/trinity_assembly.Trinity.fastq ")
+        f.write(f"{args.output_directory}/{key}/count?.txt {args.output_directory}/{key}/c.txt {args.output_directory}/{key}/length*.txt {args.output_directory}/{key}/*.m8 {args.output_directory}/{key}/trinity_assembly {args.output_directory}/{key}/*.OK {args.output_directory}/{key}/*.fq {args.output_directory}/{key}/*.?am {args.output_directory}/{key}/*.zip {args.output_directory}/{key}/trinity_assembly.Trinity.fasta.* {args.output_directory}/{key}/*.log {args.output_directory}/{key}/*.err {args.output_directory}/{key}/input{key}1.fasta {args.output_directory}/{key}/input{key}2.fasta {args.output_directory}/{key}/1_fq_accession.txt {args.output_directory}/{key}/2_fq_accession.txt {args.output_directory}/{key}/combined_fq.txt {args.output_directory}/{key}/trinityR1_input.fq {args.output_directory}/{key}/trinityR2_input.fq {args.output_directory}/{key}/bowtie_accession.txt {args.output_directory}/{key}/references.fna {args.output_directory}/{key}/bowtie_database* {args.output_directory}/{key}/trinity_assembly.Trinity.fastq ")
     f.close()
 
 # creates sample class
